@@ -1,0 +1,107 @@
+# CBD – Lab201 – Abel Teixeira
+
+To start MongoDB on Linux(Ubuntu) terminal:
+docker-compose exec mongodb mongosh
+
+> show dbs --> show databases
+admin   40.00 KiB
+config  60.00 KiB
+local   40.00 KiB
+
+test> use cbd
+switched to db cbd
+
+cbd> db.users.insertOne({Nome: "Abel", Apelido: "Teixeira"})
+{
+  acknowledged: true,
+  insertedId: ObjectId('66fe667b5c6edeccf6964033')
+}
+
+cbd> show dbs
+admin   40.00 KiB
+cbd     40.00 KiB
+config  60.00 KiB
+local   40.00 KiB
+
+cbd> db.users.find()
+[
+  {
+    _id: ObjectId('66fe667b5c6edeccf6964033'),
+    Nome: 'Abel',
+    Apelido: 'Teixeira'
+  }
+]
+
+cbd> db.users.updateOne({_id: ObjectId('66fe667b5c6edeccf6964033')}, {$set: {Idade: 20}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+
+cbd> db.users.find()
+[
+  {
+    _id: ObjectId('66fe667b5c6edeccf6964033'),
+    Nome: 'Abel',
+    Apelido: 'Teixeira',
+    Idade: 20
+  }
+]
+
+cbd> db.users.insertMany([{Nome: "Luis", Apelido: "Godinho", Idade: 20}, { Nome: "Anacleto", Apelido: "José", Idade: 50}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('66fe68dc5c6edeccf6964034'),
+    '1': ObjectId('66fe68dc5c6edeccf6964035')
+  }
+}
+cbd> db.users.find()
+[
+  {
+    _id: ObjectId('66fe667b5c6edeccf6964033'),
+    Nome: 'Abel',
+    Apelido: 'Teixeira',
+    Idade: 20
+  },
+  {
+    _id: ObjectId('66fe68dc5c6edeccf6964034'),
+    Nome: 'Luis',
+    Apelido: 'Godinho',
+    Idade: 20
+  },
+  {
+    _id: ObjectId('66fe68dc5c6edeccf6964035'),
+    Nome: 'Anacleto',
+    Apelido: 'José',
+    Idade: 50
+  }
+]
+
+cbd> db.users.deleteOne({_id: ObjectId('66fe68dc5c6edeccf6964035')})
+{ acknowledged: true, deletedCount: 1 }
+
+cbd> db.users.find()
+[
+  {
+    _id: ObjectId('66fe667b5c6edeccf6964033'),
+    Nome: 'Abel',
+    Apelido: 'Teixeira',
+    Idade: 20
+  },
+  {
+    _id: ObjectId('66fe68dc5c6edeccf6964034'),
+    Nome: 'Luis',
+    Apelido: 'Godinho',
+    Idade: 20
+  }
+]
+
+cbd> db.users.drop()
+true
+
+cbd> show collections
+

@@ -1,0 +1,15 @@
+ping
+ping Abel
+set name Abel
+get name
+set name CBD
+get name
+set idade 20
+incr idade
+get idade
+type name
+type idade
+exists idade
+incrby idade 5
+get idade
+exit

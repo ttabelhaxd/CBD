@@ -1,0 +1,13 @@
+set n1 10
+set n2 20
+set n3 30
+set n4 40
+set n5 50
+mget n1 n2 n3 n4 n5
+incrby n1 10
+incrby n5 50
+mget n1 n2 n3 n4 n5
+rpush lista 1 2 3 4 5
+lrange lista 0 -1
+lrange lista 1 2
+llen lista

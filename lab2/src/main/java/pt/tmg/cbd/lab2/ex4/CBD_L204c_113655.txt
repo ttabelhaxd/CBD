@@ -1,0 +1,34 @@
++--------------+----------------------------------------------------------------+--------------------------------------------------------------+
+|   Factor     |                           Redis                                |                            MongoDB                           |
+| Performance  | Extremely fast for read/write due to in-memory storage.        | Slower than Redis due to disk-based storage and indexing.    |
++--------------+----------------------------------------------------------------+--------------------------------------------------------------+
+| Persistence  | Requires additional configurations for persistence, and        | Automatically persists data on disk with options for         |
+|              | snapshotting can lead to data loss between intervals.          | journaling and backups.                                      |
++--------------+----------------------------------------------------------------+--------------------------------------------------------------+
+| Scalability  | Scales well with memory but can hit memory limits for large    | Scales easily with large datasets, and horizontal scaling is |
+|              | datasets.                                                      | well-supported.                                              |
++--------------+----------------------------------------------------------------+--------------------------------------------------------------+
+| Querying     | Limited querying capabilities, focused on key-value operations.| Rich query capabilities, supporting complex filtering,       |
+|              |                                                                | aggregation, and indexing.                                   |
++--------------+----------------------------------------------------------------+--------------------------------------------------------------+
+| Memory Usage | High memory usage, especially for large datasets.              | More efficient memory usage due to disk-based storage,       |
+|              |                                                                | but higher latency.                                          |
++--------------+----------------------------------------------------------------+--------------------------------------------------------------+
+| Usability    | Simple to set up, especially for time-based operations.        | More complex setup but better for data models that require   |
+|              |                                                                | advanced querying and indexing.                              |
++--------------+----------------------------------------------------------------+--------------------------------------------------------------+
+
+
+Redis Performance:
+    -Write Operation (zadd): Redis writes a product order in 1-2 ms for small datasets (in-memory).
+    -Read Operation (zrangeByScore): Redis retrieves recent orders in 1-3 ms.
+    -Memory Usage: Redis requires high memory for handling orders, especially when the dataset grows.
+
+MongoDB Performance:
+    -Write Operation (insertOne): MongoDB writes a document in 5-10 ms due to disk-based storage and indexing.
+    -Read Operation (find): MongoDB retrieves documents based on time filtering in 8-15 ms.
+    -Disk Usage: MongoDB uses more disk space but is more efficient with memory.
+
+Conclusion:
+-Redis is best suited for real-time order processing where speed is critical and the dataset is small enough to fit into memory.
+-MongoDB is better suited for cases where the application requires more advanced data queries, long-term storage, or scalability beyond the limits of memory.

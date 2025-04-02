@@ -1,0 +1,14 @@
+Order registered for user: user1: productA - Quantity: 10
+Order registered for user: user1: productB - Quantity: 20
+Limit of product units exceeded by user: user1
+Limit of product units exceeded by user: user1
+
+5 seconds passed
+
+Order registered for user: user2: produtoD - Quantity: 5
+Order registered for user: user2: produtoE - Quantity: 10
+Order registered for user: user2: produtoF - Quantity: 5
+Order registered for user: user2: produtoG - Quantity: 10
+
+
+Execution time: 5037ms

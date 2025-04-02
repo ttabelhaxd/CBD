@@ -1,0 +1,114 @@
+- Criação de um Keyspace:
+CREATE KEYSPACE newdatabase WITH replication = { 'class':'SimpleStrategy', 'replication_factor':3 };
+
+- Descrição de um Keyspace:
+DESCRIBE newdatabase
+
+- Utilização de um Keyspace:
+USE tutorialspoint;
+
+- Criação e descrição de Tabelas:
+CREATE TABLE emp(
+   emp_id int PRIMARY KEY,
+   emp_name text,
+   emp_city text,
+   emp_sal varint,
+   emp_phone varint
+   );
+
+select * from emp;
+ emp_id | emp_city | emp_name | emp_phone | emp_sal
+--------+----------+----------+-----------+---------
+
+(0 rows)
+
+- Escrita (CRUD):
+INSERT INTO emp (emp_id, emp_name, emp_city, emp_phone, emp_sal) VALUES(1,'ram', 'Hyderabad', 9848022338, 50000);
+INSERT INTO emp (emp_id, emp_name, emp_city, emp_phone, emp_sal) VALUES(2,'robin', 'Hyderabad', 9848022339, 40000);
+INSERT INTO emp (emp_id, emp_name, emp_city, emp_phone, emp_sal) VALUES(3,'rahman', 'Chennai', 9848022330, 45000);
+
+select * from emp;
+
+ emp_id | emp_city  | emp_name | emp_phone  | emp_sal
+--------+-----------+----------+------------+---------
+      1 | Hyderabad |      ram | 9848022338 |   50000
+      2 | Hyderabad |    robin | 9848022339 |   40000
+      3 |   Chennai |   rahman | 9848022330 |   45000
+
+(3 rows)
+
+- Leitura (CRUD):
+select * from emp;
+
+ emp_id | emp_city  | emp_name | emp_phone  | emp_sal
+--------+-----------+----------+------------+---------
+      1 | Hyderabad |      ram | 9848022338 |   50000
+      2 | Hyderabad |    robin | 9848022339 |   40000
+      3 |   Chennai |   rahman | 9848022330 |   45000
+
+(3 rows)
+
+- Edição (CRUD):
+UPDATE emp SET emp_city='Delhi',emp_sal=50000 WHERE emp_id=2;
+
+select * from emp;
+
+ emp_id | emp_city  | emp_name | emp_phone  | emp_sal
+--------+-----------+----------+------------+---------
+      1 | Hyderabad |      ram | 9848022338 |   50000
+      2 |     Delhi |    robin | 9848022339 |   50000
+      3 |   Chennai |   rahman | 9848022330 |   45000
+
+(3 rows)
+
+- Remoção (CRUD):
+DELETE emp_sal FROM emp WHERE emp_id=3;
+
+select * from emp;
+
+ emp_id | emp_city  | emp_name | emp_phone  | emp_sal
+--------+-----------+----------+------------+---------
+      1 | Hyderabad |      ram | 9848022338 |   50000
+      2 |     Delhi |    robin | 9848022339 |   50000
+      3 |   Chennai |   rahman | 9848022330 |    null
+
+(3 rows)
+
+- Column Values(list):
+CREATE TABLE data(name text PRIMARY KEY, email list<text>);
+INSERT INTO data(name, email) VALUES ('ramu', ['abc@gmail.com','cba@yahoo.com']);
+UPDATE data SET email = email +['xyz@tutorialspoint.com'] where name = 'ramu';
+
+SELECT * FROM data;
+
+ name | email
+------+--------------------------------------------------------------
+ ramu | ['abc@gmail.com', 'cba@yahoo.com', 'xyz@tutorialspoint.com']
+
+(1 rows)
+
+- Column Values (Set):
+CREATE TABLE data2 (name text PRIMARY KEY, phone set<varint>);
+INSERT INTO data2(name, phone)VALUES ('rahman',    {9848022338,9848022339});
+UPDATE data2 SET phone = phone + {9848022330} where name = 'rahman';
+
+SELECT * FROM data2;
+
+ name   | phone
+--------+--------------------------------------
+ rahman | {9848022330, 9848022338, 9848022339}
+
+(1 rows)
+
+- Column Values (Map):
+CREATE TABLE data3 (name text PRIMARY KEY, address map<timestamp, text>);
+INSERT INTO data3 (name, address) VALUES ('robin', {'home' : 'hyderabad' , 'office' : 'Delhi' } );
+UPDATE data3 SET address = address+{'office':'mumbai'} WHERE name = 'robin';
+
+ select * from data3;
+
+  name | address
+-------+-------------------------------------------
+ robin | {'home': 'hyderabad', 'office': 'mumbai'}
+
+(1 rows)

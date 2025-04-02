@@ -1,0 +1,99 @@
+Query 1:
+Record<{customerId: 8614, productsBought: 6}>
+Record<{customerId: 8235, productsBought: 6}>
+Record<{customerId: 7270, productsBought: 6}>
+Record<{customerId: 9405, productsBought: 6}>
+Record<{customerId: 10870, productsBought: 6}>
+Record<{customerId: 8372, productsBought: 6}>
+Record<{customerId: 9432, productsBought: 6}>
+Record<{customerId: 8080, productsBought: 6}>
+Record<{customerId: 9817, productsBought: 6}>
+Record<{customerId: 7004, productsBought: 6}>
+
+Query 2:
+Record<{customerId: 10089, campaignsParticipated: 4}>
+Record<{customerId: 3725, campaignsParticipated: 4}>
+Record<{customerId: 1509, campaignsParticipated: 4}>
+Record<{customerId: 8545, campaignsParticipated: 4}>
+Record<{customerId: 5067, campaignsParticipated: 4}>
+Record<{customerId: 3520, campaignsParticipated: 4}>
+Record<{customerId: 477, campaignsParticipated: 4}>
+Record<{customerId: 5758, campaignsParticipated: 4}>
+Record<{customerId: 3138, campaignsParticipated: 4}>
+Record<{customerId: 3174, campaignsParticipated: 4}>
+
+Query 3:
+Record<{customerId: 387, productsBought: 6}>
+Record<{customerId: 2125, productsBought: 6}>
+Record<{customerId: 2174, productsBought: 6}>
+Record<{customerId: 5524, productsBought: 6}>
+Record<{customerId: 4141, productsBought: 6}>
+Record<{customerId: 965, productsBought: 6}>
+Record<{customerId: 6177, productsBought: 6}>
+Record<{customerId: 6182, productsBought: 6}>
+Record<{customerId: 5324, productsBought: 6}>
+Record<{customerId: 8180, productsBought: 6}>
+
+Query 4:
+Record<{customerId: 8614, numberOfKids: NULL}>
+Record<{customerId: 9405, numberOfKids: NULL}>
+Record<{customerId: 8235, numberOfKids: NULL}>
+Record<{customerId: 7270, numberOfKids: NULL}>
+Record<{customerId: 4001, numberOfKids: NULL}>
+Record<{customerId: 10870, numberOfKids: NULL}>
+Record<{customerId: 8372, numberOfKids: NULL}>
+Record<{customerId: 9432, numberOfKids: NULL}>
+Record<{customerId: 8080, numberOfKids: NULL}>
+Record<{customerId: 9817, numberOfKids: NULL}>
+
+Query 5:
+Record<{campaignName: "Cmp4", participationCount: 167}>
+Record<{campaignName: "Cmp3", participationCount: 163}>
+Record<{campaignName: "Cmp5", participationCount: 163}>
+Record<{campaignName: "Cmp1", participationCount: 144}>
+Record<{campaignName: "Cmp2", participationCount: 30}>
+
+Query 6:
+Record<{educationName: "Graduation", customerCount: 1127}>
+Record<{educationName: "PhD", customerCount: 486}>
+Record<{educationName: "Master", customerCount: 370}>
+Record<{educationName: "2n Cycle", customerCount: 203}>
+Record<{educationName: "Basic", customerCount: 54}>
+
+Query 7:
+Record<{maritalStatus: "Married", customerCount: 864}>
+Record<{maritalStatus: "Together", customerCount: 580}>
+Record<{maritalStatus: "Single", customerCount: 480}>
+Record<{maritalStatus: "Divorced", customerCount: 232}>
+Record<{maritalStatus: "Widow", customerCount: 77}>
+Record<{maritalStatus: "Alone", customerCount: 3}>
+Record<{maritalStatus: "Absurd", customerCount: 2}>
+Record<{maritalStatus: "YOLO", customerCount: 2}>
+
+Query 8:
+Record<{customerId: 5067, productsBought: 24, campaignsParticipated: 24}>
+Record<{customerId: 5536, productsBought: 24, campaignsParticipated: 24}>
+Record<{customerId: 1509, productsBought: 24, campaignsParticipated: 24}>
+Record<{customerId: 10089, productsBought: 24, campaignsParticipated: 24}>
+Record<{customerId: 3725, productsBought: 24, campaignsParticipated: 24}>
+Record<{customerId: 3174, productsBought: 24, campaignsParticipated: 24}>
+Record<{customerId: 477, productsBought: 24, campaignsParticipated: 24}>
+Record<{customerId: 3138, productsBought: 24, campaignsParticipated: 24}>
+Record<{customerId: 8545, productsBought: 24, campaignsParticipated: 24}>
+Record<{customerId: 3520, productsBought: 20, campaignsParticipated: 20}>
+
+Query 9:
+Record<{customerId: 8614, numberOfTeens: NULL}>
+Record<{customerId: 9405, numberOfTeens: NULL}>
+Record<{customerId: 8235, numberOfTeens: NULL}>
+Record<{customerId: 7270, numberOfTeens: NULL}>
+Record<{customerId: 4001, numberOfTeens: NULL}>
+Record<{customerId: 10870, numberOfTeens: NULL}>
+Record<{customerId: 8372, numberOfTeens: NULL}>
+Record<{customerId: 9432, numberOfTeens: NULL}>
+Record<{customerId: 8080, numberOfTeens: NULL}>
+Record<{customerId: 9817, numberOfTeens: NULL}>
+
+Query 10:
+Record<{averageIncome: 52247.251353790605}>
+

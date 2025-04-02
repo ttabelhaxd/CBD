@@ -1,0 +1,53 @@
+// NMEC: 113655
+
+# 0. Carregue o conteudo do ficheiro `/resouces/git_selection.csv`.
+LOAD CSV WITH HEADERS FROM "file:///git_selection.csv" AS row
+MERGE (person:Person {svn_id: row.svn_id})
+ON CREATE SET person.name = row.real_name
+MERGE (project:Project {name: row.project_name})
+MERGE (org:Organization {name: row.organization})
+MERGE (person) - [rel:WORKS_ON] -> (project)
+ON CREATE SET rel.role = row.role_on_project
+MERGE (person) - [:BELONGS_TO] -> (org);
+
+# 1. Liste a informação de cada utilizador.
+MATCH (person:Person)
+RETURN person.svn_id AS SVN_ID, person.name AS Name;
+
+# 2. Liste o nome de cada utilizador.
+MATCH (person:Person)
+RETURN person.name AS Name;
+
+# 3. Liste a informação de cada projeto, no qual tenha participado pelo menos um utilizador.
+MATCH (project:Project)<-[:WORKS_ON]-(person:Person)
+RETURN DISTINCT project.name AS ProjectName;
+
+# 4. Liste os utilizadores e total de projetos em que cada um colabora.
+MATCH (person:Person)-[:WORKS_ON]->(project:Project)
+RETURN person.name AS Name, COUNT(project) AS TotalProjects;
+
+# 5. Liste os utilizadores e do total de projetos em que cada colabora ordenados por ordem decrescente do total.
+MATCH (person:Person)-[:WORKS_ON]->(project:Project)
+RETURN person.name AS Name, COUNT(project) AS TotalProjects
+ORDER BY TotalProjects DESC;
+
+# 6. Liste projetos e total de membros em cada projeto.
+MATCH (person:Person)-[:WORKS_ON]->(project:Project)
+RETURN project.name AS ProjectName, COUNT(person) AS TotalMembers;
+
+# 7. Liste projetos e total de membros com a role "Committer" em cada projeto.
+MATCH (person:Person)-[rel:WORKS_ON]->(project:Project)
+WHERE rel.role = "Committer"
+RETURN project.name AS ProjectName, COUNT(person) AS TotalCommitters;
+
+# 8. Liste todos os utilizadores que participaram nos mesmo projetos do que o utilizador "atm" (id). Mostre os atributos: nome de "atm", nome utilizador 2, nome do projeto.
+MATCH (atm:Person {svn_id: "atm"})-[:WORKS_ON]->(project:Project)<-[:WORKS_ON]-(other:Person)
+WHERE atm <> other
+RETURN atm.name AS ATM_Name, other.name AS OtherUserName, project.name AS ProjectName;
+
+# 9. Liste todos os utilizadores que participaram com a role "Committer" em projetos em que o utilizador "atm" (id1) participou com a role "PMC".
+MATCH (atm:Person {svn_id: "atm"})-[r1:WORKS_ON]->(project:Project)
+WHERE r1.role = "PMC"
+MATCH (committer:Person)-[r2:WORKS_ON]->(project)
+WHERE r2.role = "Committer"
+RETURN atm.name AS ATM_Name, committer.name AS CommitterName, project.name AS ProjectName;
